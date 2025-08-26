@@ -4,6 +4,10 @@ A simple e-commerce project built with **Next.js 15**, featuring product listing
 
 **Live Demo:** [https://next-js-six-bay.vercel.app/](https://next-js-six-bay.vercel.app/)
 
+#Login Credintials
+username: "jsmith",
+password: "123456",
+
 ---
 
 ## Features
