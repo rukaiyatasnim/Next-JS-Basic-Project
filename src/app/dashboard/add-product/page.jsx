@@ -1,8 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function AddProductPage() {
+    const { data: session, status } = useSession();
+    const router = useRouter();
+
     const [formData, setFormData] = useState({
         name: "",
         brand: "",
@@ -12,6 +17,13 @@ export default function AddProductPage() {
     });
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+
+    // Redirect unauthenticated users
+    useEffect(() => {
+        if (status === "unauthenticated") {
+            router.push("/login");
+        }
+    }, [status]);
 
     const handleChange = (e) =>
         setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -25,6 +37,8 @@ export default function AddProductPage() {
             setFormData({ name: "", brand: "", price: "", description: "", image: "" });
         }, 1000);
     };
+
+    if (status === "loading") return <p className="p-6 text-center">Loading...</p>;
 
     return (
         <div className="max-w-3xl mx-auto px-6 py-12">

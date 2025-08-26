@@ -3,10 +3,8 @@
 export default function AboutPage() {
     return (
         <div className="p-6 max-w-5xl mx-auto">
-            {/* Header */}
             <h1 className="text-4xl font-extrabold text-center mb-6">About Us</h1>
 
-            {/* Content */}
             <p className="text-gray-700 mb-4 leading-relaxed">
                 Welcome to our platform! We are passionate about delivering the best tech products to our customers.
                 Our mission is to provide high-quality gadgets with excellent customer support.
@@ -21,7 +19,6 @@ export default function AboutPage() {
                 We value trust, quality, and customer satisfaction above all. Thank you for being a part of our journey!
             </p>
 
-            {/* Optional CTA */}
             <div className="text-center mt-8">
                 <a
                     href="/products"
