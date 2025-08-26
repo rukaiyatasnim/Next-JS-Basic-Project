@@ -1,32 +1,86 @@
 "use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+const products = [
+    {
+        id: "1",
+        name: "Wireless Headphones",
+        brand: "SoundMax",
+        price: "$149.99",
+        description: "High-quality wireless headphones with noise-canceling feature.",
+        image: "https://images.unsplash.com/photo-1641048930621-ab5d225ae5b0?q=80&w=327&auto=format&fit=crop"
+    },
+    {
+        id: "2",
+        name: "Apple 15 Pro Max",
+        brand: "TechNova",
+        price: "$999.99",
+        description: "Latest smartphone with advanced camera and performance.",
+        image: "https://images.unsplash.com/photo-1695639516809-7688b5a97554?q=80&w=1032&auto=format&fit=crop"
+    },
+    {
+        id: "3",
+        name: "Smartwatch Series 5",
+        brand: "FitTrack",
+        price: "$199.99",
+        description: "Stylish smartwatch with fitness tracking capabilities.",
+        image: "https://images.unsplash.com/photo-1632794716789-42d9995fb5b6?q=80&w=870&auto=format&fit=crop"
+    },
+    {
+        id: "4",
+        name: "Bluetooth Speaker",
+        brand: "EchoSound",
+        price: "$79.99",
+        description: "Portable Bluetooth speaker with 360° sound.",
+        image: "https://images.unsplash.com/photo-1542193810-9007c21cd37e?q=80&w=870&auto=format&fit=crop"
+    },
+    {
+        id: "5",
+        name: "Macbook Ultra",
+        brand: "CompuTech",
+        price: "$1299.99",
+        description: "Lightweight laptop with high-resolution display.",
+        image: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=870&auto=format&fit=crop"
+    },
+    {
+        id: "6",
+        name: "Gaming Mouse",
+        brand: "HyperX",
+        price: "$59.99",
+        description: "Ergonomic gaming mouse with customizable DPI.",
+        image: "https://images.unsplash.com/photo-1629429408209-1f912961dbd8?q=80&w=870&auto=format&fit=crop"
+    },
+    {
+        id: "7",
+        name: "Portable Charger",
+        brand: "PowerGo",
+        price: "$39.99",
+        description: "Compact power bank with fast charging support.",
+        image: "https://images.unsplash.com/photo-1619489646924-b4fce76b1db5?q=80&w=870&auto=format&fit=crop"
+    },
+    {
+        id: "8",
+        name: "VR Headset",
+        brand: "VisionPro",
+        price: "$499.99",
+        description: "Immersive virtual reality headset for gaming.",
+        image: "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?q=80&w=870&auto=format&fit=crop"
+    },
+    {
+        id: "9",
+        name: "Smart Home Hub",
+        brand: "HomeLink",
+        price: "$89.99",
+        description: "Central control unit for smart home devices.",
+        image: "https://images.unsplash.com/photo-1729839206142-d03c98f921fd?q=80&w=870&auto=format&fit=crop"
+    }
+];
+
 export default function ProductsPage() {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const router = useRouter();
 
-    useEffect(() => {
-        fetch("/services.json")
-            .then((res) => {
-                if (!res.ok) throw new Error("Failed to fetch products.");
-                return res.json();
-            })
-            .then(setData)
-            .catch((err) => setError(err.message))
-            .finally(() => setLoading(false));
-    }, []);
-
-    const goToDetails = (id) => {
-        router.push(`/products/${id}`);
-    };
-
-    if (loading) return <div className="p-6 text-center">Loading products...</div>;
-    if (error) return <div className="p-6 text-center text-red-600">Error: {error}</div>;
+    const goToDetails = (id) => router.push(`/products/${id}`);
 
     return (
         <div className="p-6 max-w-7xl mx-auto">
@@ -36,7 +90,7 @@ export default function ProductsPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                {data.map((item) => (
+                {products.map((item) => (
                     <div key={item.id} className="bg-gradient-to-tr from-indigo-50 to-purple-50 rounded-2xl shadow-lg p-5">
                         <div className="relative w-full h-72 rounded-xl overflow-hidden mb-4">
                             <Image
@@ -52,7 +106,6 @@ export default function ProductsPage() {
                         <p className="mt-2 text-xl font-bold text-gray-900">{item.price}</p>
                         <p className="mt-3 text-gray-700">{item.description}</p>
 
-                        {/* Details Button */}
                         <button
                             onClick={() => goToDetails(item.id)}
                             className="mt-4 w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition"

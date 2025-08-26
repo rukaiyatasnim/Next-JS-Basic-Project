@@ -2,9 +2,9 @@
 
 // layout.js (server component)
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import SessionWrapper from "@/Components/SessionWrapper";
+import Navbar from "../Components/Navbar.jsx"
+import Footer from "../Components/Footer.jsx"
+import SessionWrapper from "../Components/SessionWrapper.jsx";
 
 export const metadata = {
   title: "TechNest",
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="antialiased">
         <SessionWrapper>
-          <Navbar />
+            <Navbar/>
           {children}
           <Footer />
         </SessionWrapper>
