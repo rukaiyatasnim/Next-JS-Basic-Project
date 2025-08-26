@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TechNest - Next.js E-commerce Project
 
-## Getting Started
+A simple e-commerce project built with **Next.js 15**, featuring product listing, product details, and authentication-protected pages for adding products.  
 
-First, run the development server:
+**Live Demo:** [https://next-js-six-bay.vercel.app/](https://next-js-six-bay.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+**Landing Page (`/`)**
+- Navbar, Hero, Product Highlights, Footer  
+- Navigation to Login and Products  
+- Publicly accessible  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Login Page (`/login`)**
+- NextAuth.js login (Google or credentials)  
+- Redirects to `/products` after successful login  
 
-## Learn More
+**Product List Page (`/products`)**
+- Displays products from `services.json`  
+- Each product: name, description, price, and Details button  
+- Publicly accessible  
 
-To learn more about Next.js, take a look at the following resources:
+**Product Details Page (`/products/[id]`)**
+- Shows full product details  
+- Publicly accessible  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Protected Page: Add Product (`/dashboard/add-product`)**
+- Only for logged-in users  
+- Add new products via form and store in database  
+- Redirects unauthenticated users to `/login`  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Technologies Used
+- Next.js 15 (App Router)  
+- NextAuth.js for authentication  
+- Tailwind CSS
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
